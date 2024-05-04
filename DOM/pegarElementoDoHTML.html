@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Js no HTML</title>
+        <style>
+            #box {
+                border: 1px solid black;
+                height: 100px;
+                width: 100px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .ball {
+                border: 1px solid black;
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                margin-top: 50px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">.</div>
+        <div class="ball"></div>
+        <div id="elemento"></div>
+    </body>
+    <script>
+        var box = document.getElementById("box")
+        var ball = document.getElementsByClassName("ball")
+        var elemento = document.querySelector("#elemento");
+        box.style.background = `red`;
+        ball.style.background = `green`;
+    </script>
+</html>
