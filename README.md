@@ -1,2 +1,2 @@
 # Estudos-JavaScript
- Estudos de JavaScript desde 2023
+ Ainda estou organizando esse repositorio de acordo com minhas revsões de JavaScript!
