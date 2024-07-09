@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relogio Js</title>
+    <style>
+        * {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        body {
+            height: auto;
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #clock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 200px;
+        }
+
+        #cloud {
+            border: 1px solid black;
+            border-radius: 32px;
+            color: black;
+            width: 256px;
+            text-align: center;
+        }
+
+        #sun-and-moon {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            font-size: 1.3em;
+        }
+
+        #fieldset-clock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 40%;
+            gap: 32px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="cloud">
+            <h1 id="time-in-sky">Tá de </h1>
+        </div>
+        <div id="fieldset-clock">
+            <div id="sun-and-moon">
+                <div id="clock"></div>
+            </div>
+            <span>Horario de Brasilia</span>
+        </div>
+    </main>
+</body>
+<script>
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var secounds = date.getSeconds();
+
+    var clock = document.querySelector("#clock");
+    var sunAndMoon = document.querySelector("#sun-and-moon");
+    var body = document.querySelector("body");
+    var textTimeInSky = document.querySelector("#time-in-sky");
+    var cloud = document.querySelector("#cloud");
+
+    var formatTime = (time) => {
+        if(time < 10) {
+            return `0${time}`;
+        } else {
+            return time;
+        }
+    }
+
+    function styleContent(
+     bodyColor,
+     textColor,
+     astroColor,
+     astroTextColor, 
+     textTime,
+     cloudColor
+     
+    ) {
+        body.style.cssText = `
+            background: ${bodyColor}; 
+            color: ${textColor}
+        `;
+
+        textTimeInSky.innerText += ` ${textTime}`;
+
+        clock.style.cssText = `
+            background: ${astroColor};
+            border-radius: 50%; 
+            color: ${astroTextColor}
+        `;
+
+        cloud.style.cssText = `
+            background: ${cloudColor};
+        ` ;
+    }
+
+    sunAndMoon.style.cssText = `
+        border-radius: 50%;
+        font-size: 1.9em;
+    `;
+
+    clock.innerText = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(secounds)}`;
+
+    if(hours >= 0 && hours < 6) {
+        styleContent("black", "white", "white", "black", "Madrugada", "lightgrey");
+    } else if(hours >= 6 && hours < 12) {
+        styleContent("yellow", "black", "lightyellow", "black", "Manhã", "lightblue");
+    } else if(hours >= 12 && hours < 18) {
+        styleContent("orange", "black", "yellow", "black", "Tarde", "lightblue");
+    } else if(hours >= 18 && hours <= 23) {
+        styleContent("grey", "black", "lightgrey", "black", "Noite", "darkgrey");
+    }
+</script>
+</html>

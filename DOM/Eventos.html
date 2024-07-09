@@ -32,9 +32,15 @@
     <script>
         let box = document.querySelector(".box");
         var btn = document.querySelector("#btn");
-        let count = 0;
+        var count = 0;
         btn.addEventListener("click", () => {
-            box.style.cssText = `width: ${count}px; height: ${count}px;`
+            if(count % 2 == 0) {
+                box.style.cssText = `background: blue;`
+            } else {
+                box.style.cssText = `background: red;`
+            }
+            box.innerText = count;
+            box.style.cssText += `font-size: ${count}px;`
             count++;
         });
     </script>
